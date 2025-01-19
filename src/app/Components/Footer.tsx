@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <>
-      <div className="w-full h-[750px] bg-[#18181B] absolute bottom-0">
+      <div className="w-full h-[750px] bg-[#18181B] bottom-0">
         <div className="w-full h-[100px] bg-[#EF4444] mt-[60px]"></div>
         <div className="w-full flex items-center justify-center ">
           <div className="flex mt-[75px] ">

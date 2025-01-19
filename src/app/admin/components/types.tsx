@@ -3,5 +3,6 @@ export type foodType ={
     price: number;
     image: any;
     ingredients: string;
-    _id:any
+    _id:any;
+    color:string
   }

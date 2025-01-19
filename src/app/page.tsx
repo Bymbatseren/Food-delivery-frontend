@@ -1,6 +1,19 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Header from "./Components/Header";
+import { Badge } from "@/components/ui/badge"
+import CategoryFood from "./Components/category-food";
+import Footer from "./Components/Footer";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+
 
 export default function Home() {
   const [category, setCategories] = useState([]);
@@ -34,31 +47,32 @@ export default function Home() {
   }, []);
   return (
     <>
-      <div className="flex">
-        <input
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-        />
-        <button
-          className="bg-black text-white"
-          onClick={() => Create(inputValue)}
-          disabled={!inputValue}
-        >
-          Add category
-        </button>
-      </div>
-      {category.map((category: any) => (
-        <div key={category._id} className="flex gap-5">
-          <div>{category.categoryName}</div>
-          <button
-            onClick={() => {
-              Delete(category._id);
-            }}
-          >
-            delete
-          </button>
+      <div className="bg-[#404040] min-h-screen">
+        <Header />
+        <img src="/background.png" className="w-full h-[570px] object-fill" ></img>
+        <div className="ml-10">
+          <p className="text-white font-[600] text-[30px] ml-2 mt-5">Categories</p>
+          {
+            category.map((category: any) => (
+              <Badge className="bg-white text-black ml-2 mt-5 rounded-full" key={category._id} >
+                {category.categoryName}
+              </Badge>
+            ))
+          }
+          <div className="mt-[100px]">
+            <CategoryFood />
+            <div className="mt-10">
+              <CategoryFood/>
+            </div>
+            
+          </div>
+          <Footer />
         </div>
-      ))}
+        
+      </div>
+
+
+
     </>
   );
 }

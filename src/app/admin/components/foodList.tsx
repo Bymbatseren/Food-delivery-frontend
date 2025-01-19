@@ -11,6 +11,7 @@ export default function FoodList() {
      
       const data: foodType[] = await res.json();
       setFoodList(data);
+      console.log(data)
     
   }
 
@@ -21,10 +22,11 @@ export default function FoodList() {
 
 
   return (
-    <div>
+    <div className="flex gap-6  ">
       {foodList.map((foodItem, index) => (
         <div key={foodItem._id }>
           <Food
+            color=""
             _id={foodItem._id} 
             image={foodItem.image}
             foodName={foodItem.foodName}

@@ -46,12 +46,12 @@ export default function AddDish() {
 
   const createDish = async () => {
   
-      const food: foodType = {
+      const food: any = {
         foodName,
         price: Number(price),
         image,
         ingredients,
-        _id,
+      
      
       };
       const response = await fetch(`http://localhost:4000/food`, {
