@@ -45,28 +45,24 @@ export default function AddDish() {
   };
 
   const createDish = async () => {
-  
-      const food: any = {
-        foodName,
-        price: Number(price),
-        image,
-        ingredients,
-      
-     
-      };
-      const response = await fetch(`http://localhost:4000/food`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(food),
-      });
-      setFoodName("");
-      setPrice("");
-      setIngredients("");
-      setImage("");
-    
-    
+    const food: any = {
+      foodName,
+      price: Number(price),
+      image,
+      ingredients,
+      category: "678d080e26492e0425d85090",
+    };
+    const response = await fetch(`http://localhost:4000/food`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(food),
+    });
+    setFoodName("");
+    setPrice("");
+    setIngredients("");
+    setImage("");
   };
 
   return (
@@ -117,11 +113,11 @@ export default function AddDish() {
           <div>
             <label>Upload Image</label>
             <input type="file" onChange={handleUpload} className="p-2" />
-              <img
-                src={image}
-                alt="Uploaded dish"
-                className="mt-2 w-32 h-32 object-cover"
-              />
+            <img
+              src={image}
+              alt="Uploaded dish"
+              className="mt-2 w-32 h-32 object-cover"
+            />
           </div>
         </div>
         <AlertDialogFooter>
