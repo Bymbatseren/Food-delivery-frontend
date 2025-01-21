@@ -1,15 +1,11 @@
-"use client";
+"use client"
 import { useEffect, useState } from "react";
-import Navigation from "./components/navigation";
 import { Badge } from "@/components/ui/badge";
-import Modal from "./components/modal";
-import FoodList from "./components/foodList";
-import AddDish from "./components/addDish";
+import FoodList from "./components/foodList"; // FoodList компонент
 
 export default function Admin() {
   const [category, setCategories] = useState<any>([]);
-  const [render, setRender] = useState("");
-  const [foodImage, setFoodImage] = useState();
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   async function Show() {
     const res = await fetch(`http://localhost:4000/food-category`);
@@ -19,30 +15,33 @@ export default function Admin() {
 
   useEffect(() => {
     Show();
-  }, [render]);
-  console.log(category);
+  }, []);
+
+  const handleCategory = (categoryId: string) => {
+    setSelectedCategory(categoryId); 
+  };
+  console.log(selectedCategory)
 
   return (
-    <>
-      <div className="bg-[#f4f4f5] flex">
-        {" "}
-        <Navigation />
-        <div>
-          <div className="bg-white mx-5 my-[3%]">
-            <p>Dishes Category</p>
-            {category.map((category: any) => (
-              <Badge className="bg-white text-black mr-2" key={category._id}>
-                {category.categoryName}
-              </Badge>
-            ))}
-            <Modal setRender={setRender} />
-          </div>
-          <div>
-            <FoodList />
-            <FoodList />
-          </div>
+    <div className="bg-[#f4f4f5] flex">
+      <div>
+        <div className="bg-white mx-5 my-[3%]">
+          <p>Dishes Category</p>
+          {category.map((category: any) => (
+            <Badge
+              key={category._id}
+              className="bg-white text-black mr-2 cursor-pointer"
+              onClick={() => handleCategory(category._id)}
+            >
+              {category.categoryName}
+            </Badge>
+          ))}
         </div>
+
+       
+        <FoodList selectedCategory={selectedCategory} />
       </div>
-    </>
+    </div>
   );
 }
+
