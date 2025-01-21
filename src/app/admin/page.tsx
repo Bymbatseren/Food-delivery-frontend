@@ -7,7 +7,7 @@ import FoodList from "./components/foodList";
 import AddDish from "./components/addDish";
 
 export default function Admin() {
-  const [category, setCategories] = useState([]);
+  const [category, setCategories] = useState<any>([]);
   const [render, setRender] = useState("");
   const [foodImage, setFoodImage] = useState();
 
@@ -17,11 +17,10 @@ export default function Admin() {
     setCategories(data);
   }
 
-
   useEffect(() => {
     Show();
   }, [render]);
-
+  console.log(category);
 
   return (
     <>
@@ -29,7 +28,7 @@ export default function Admin() {
         {" "}
         <Navigation />
         <div>
-          <div className="bg-white mx-4 my-[3%]">
+          <div className="bg-white mx-5 my-[3%]">
             <p>Dishes Category</p>
             {category.map((category: any) => (
               <Badge className="bg-white text-black mr-2" key={category._id}>
@@ -38,11 +37,11 @@ export default function Admin() {
             ))}
             <Modal setRender={setRender} />
           </div>
-          <AddDish/>
-          <FoodList/>
+          <div>
+            <FoodList />
+            <FoodList />
+          </div>
         </div>
-      
-        
       </div>
     </>
   );

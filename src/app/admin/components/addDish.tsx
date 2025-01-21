@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { foodType } from "./types";
 
-export default function AddDish() {
+export default function AddDish({ categoryId }: any) {
   const [image, setImage] = useState<string>();
   const [foodName, setFoodName] = useState<string>("");
   const [price, setPrice] = useState<number | string>("");
@@ -50,7 +50,7 @@ export default function AddDish() {
       price: Number(price),
       image,
       ingredients,
-      category: "678d080e26492e0425d85090",
+      category: categoryId,
     };
     const response = await fetch(`http://localhost:4000/food`, {
       method: "POST",
@@ -68,8 +68,10 @@ export default function AddDish() {
   return (
     <AlertDialog>
       <AlertDialogTrigger>
-        <div className="bg-[#EF4444] rounded-full w-9 h-9 flex justify-center items-center">
-          +
+        <div className="lg:w-[270px] lg:h-[280px]  bg-white border-[2px] rounded-lg flex justify-center items-center border-dotted border-[#EF4444] ">
+          <div className="bg-[#EF4444] rounded-full w-9 h-9 flex justify-center items-center">
+            +
+          </div>
         </div>
       </AlertDialogTrigger>
       <AlertDialogContent>
