@@ -14,8 +14,8 @@ import {
 } from "@/components/ui/alert-dialog";
 import { foodType } from "./types";
 
-export default function AddDish({ categoryId }: any) {
-  const [image, setImage] = useState<string>();
+export default function AddDish({ categoryId, name }: any) {
+  const [image, setImage] = useState<any>();
   const [foodName, setFoodName] = useState<string>("");
   const [price, setPrice] = useState<number | string>("");
   const [ingredients, setIngredients] = useState<string>("");
@@ -62,15 +62,20 @@ export default function AddDish({ categoryId }: any) {
     setFoodName("");
     setPrice("");
     setIngredients("");
-    setImage("");
+    setImage({});
   };
 
   return (
     <AlertDialog>
       <AlertDialogTrigger>
         <div className="lg:w-[270px] lg:h-[280px]  bg-white border-[2px] rounded-lg flex justify-center items-center border-dotted border-[#EF4444] ">
-          <div className="bg-[#EF4444] rounded-full w-9 h-9 flex justify-center items-center">
-            +
+          <div>
+            <div className="flex justify-center items-center">
+              <div className="bg-[#EF4444] rounded-full w-9 h-9 flex justify-center items-center ">
+                +
+              </div>
+            </div>
+            <div>Add new Dish to {name} </div>
           </div>
         </div>
       </AlertDialogTrigger>

@@ -21,7 +21,7 @@ export default function Modal({ Show, setRender }: any) {
       },
       body: JSON.stringify({ name }),
     });
-    setRender(name);
+
     setInputValue("");
   }
 

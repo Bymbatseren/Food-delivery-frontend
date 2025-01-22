@@ -17,30 +17,29 @@ export default function FoodList({ selectedCategory }: FoodListProps) {
   }, [selectedCategory]);
 
   async function fetchFoodByCategory(categoryId: string) {
-    const res = await fetch(`http://localhost:4000/food?category=${categoryId}`);
+    const res = await fetch(
+      `http://localhost:4000/food?category=${categoryId}`
+    );
     const data = await res.json();
     setFoodList(data);
   }
 
   return (
     <div className="flex">
-      <AddDish categoryId={selectedCategory}/>
-       
-        <div className="grid grid-cols-3 gap-4">
-          {foodList.map((foodItem: any) => (
-            <Food
-              key={foodItem._id}
-              _id={foodItem._id}
-              foodName={foodItem.foodName}
-              price={foodItem.price}
-              image={foodItem.image}
-              ingredients={foodItem.ingredients}
-              color=""
-            />
-          ))}
-        </div>
-      
+      <div className="grid grid-cols-3 gap-4">
+        {foodList.map((foodItem: any) => (
+          <Food
+            key={foodItem._id}
+            _id={foodItem._id}
+            foodName={foodItem.foodName}
+            price={foodItem.price}
+            image={foodItem.image}
+            ingredients={foodItem.ingredients}
+            color=""
+            foodId={foodItem._id}
+          />
+        ))}
+      </div>
     </div>
   );
 }
-
