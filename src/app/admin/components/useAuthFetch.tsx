@@ -14,34 +14,13 @@ export default function useFetch(path: string) {
   }, []);
   return { data };
 }
-export function usePut({
-  path,
-  id,
-  foodName,
-  image,
-  ingredients,
-  categoryId,
-  price,
-}: any) {
-  async function getFetchData() {
-    const food: any = {
-      foodName,
-      price: Number(price),
-      image,
-      ingredients,
-      category: categoryId,
-    };
-    fetch(`http://localhost:4000/${path}/${id}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(food),
-    });
 
-    useEffect(() => {
-      getFetchData();
-    }, []);
-  }
-  return getFetchData;
+export function updateRequest({ path, id, item }: any) {
+  fetch(`http://localhost:4000/${path}/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(item),
+  });
 }

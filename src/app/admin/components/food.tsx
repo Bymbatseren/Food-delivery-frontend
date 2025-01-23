@@ -1,17 +1,5 @@
 import { foodType } from "./types";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
 import useFetch from "./useAuthFetch";
-import { usePut } from "./useAuthFetch";
 import EditFood from "./editFood";
 export default function Food({
   image,
@@ -26,16 +14,31 @@ export default function Food({
   return (
     <>
       <div
-        className={`lg:w-[270px] lg:h-[280px] border-[#E4E4E7] bg-${color} border-[2px] rounded-lg flex justify-center items-center`}
+        className={`w-[240px] lg:w-[270px] lg:h-[280px] border-[#E4E4E7] bg-${color} border-[2px] rounded-lg `}
       >
-        <div className=" lg:w-[240px]">
-          <img src={image} className="w-[240px] h-[130px]"></img>
-          <EditFood foodId={foodId} data={data} />
-          <div className="flex justify-between">
+        <div className="w-full h-[130px] lg:w-[240px] relative">
+          <img src={image} className="w-full object-cover h-[130px] " />
+          {/* <div className="flex justify-end items-end mt-2 > */}
+          <EditFood
+            food={{
+              image,
+              foodName,
+              price,
+              ingredients,
+              color,
+              foodId,
+            }}
+            data={data}
+          />
+          {/* </div> */}
+        </div>
+
+        <div>
+          <div className="flex justify-between mt-3">
             <p className="text-[#EF4444]">{foodName}</p>
             <div className="text-[#09090B] ">{price}$</div>
           </div>
-          <p>{ingredients}</p>
+          <p>{ingredients.slice(0, 100)}</p>
         </div>
       </div>
     </>

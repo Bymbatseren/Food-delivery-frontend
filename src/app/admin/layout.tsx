@@ -14,12 +14,14 @@ export default function Layout({
   return (
     <ClerkProvider>
       <SignedOut>
-        <div className="">
+        <span>
           <SignInButton />
-        </div>
+        </span>
       </SignedOut>
       <SignedIn>
-        <UserButton />
+        <span className="w-4">
+          <UserButton />
+        </span>
         <div>{children}</div>;
       </SignedIn>
     </ClerkProvider>

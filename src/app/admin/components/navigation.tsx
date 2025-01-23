@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Navigation() {
   return (
     <>
@@ -22,7 +24,9 @@ export default function Navigation() {
               Food menu
             </button>
             <div className="pt-[24px]">
-              <p className="text-[#09090B] font-[500] text-[14px]">Orders</p>
+              <Link href="/admin/orders">
+                <p className="text-[#09090B] font-[500] text-[14px]">Orders</p>
+              </Link>
             </div>
             <div className="pt-[24px]">
               <p className="text-[#09090B] font-[500] text-[14px]">Settings</p>

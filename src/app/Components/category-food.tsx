@@ -49,6 +49,7 @@ export default function CategoryFood() {
               foodName={foodItem.foodName}
               price={foodItem.price}
               ingredients={foodItem.ingredients}
+              foodId={foodItem._id}
             />
           </div>
         ))}

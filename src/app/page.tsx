@@ -42,10 +42,7 @@ export default function Home() {
     <>
       <div className="bg-[#404040] min-h-screen">
         <Header />
-        <img
-          src="/background.png"
-          className="w-full h-[570px] object-fill"
-        ></img>
+        <img src="/background.png" className="w-full object-fill"></img>
         <div className="ml-10">
           <p className="text-white font-[600] text-[30px] ml-2 mt-5">
             Categories
