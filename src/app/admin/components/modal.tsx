@@ -36,7 +36,7 @@ export default function Modal({ Show, setRender }: any) {
         </AlertDialogTrigger>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+            <AlertDialogTitle>Add new category</AlertDialogTitle>
             <AlertDialogDescription>
               <input
                 placeholder="Type category name ..."

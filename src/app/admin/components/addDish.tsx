@@ -118,12 +118,33 @@ export default function AddDish({ categoryId, name }: any) {
             />
           </div>
           <div>
-            <label>Upload Image</label>
-            <input type="file" onChange={handleUpload} className="p-2" />
-            <img
-              src={image}
-              alt="Uploaded dish"
-              className="mt-2 w-32 h-32 object-cover"
+            <label htmlFor="image">
+              {!image && (
+                <div
+                  className="w-[400px] h-[200px] bg-[#7F7F800D] mt-20 flex
+                justify-center items-center"
+                >
+                  <div>
+                    <div className="w-[28px] h-[28px] rounded-full bg-white ml-5 flex justify-center items-center"></div>
+                    <p>Add photo</p>
+                  </div>
+                </div>
+              )}
+              {image && (
+                <div className="h-48 w-96 mt-10 ml-4 bg-slate-300">
+                  <img
+                    src={image}
+                    alt="problem"
+                    className="object-cover h-48 w-96"
+                  ></img>
+                </div>
+              )}
+            </label>
+            <input
+              id="image"
+              type="file"
+              onChange={handleUpload}
+              className="p-2 hidden"
             />
           </div>
         </div>

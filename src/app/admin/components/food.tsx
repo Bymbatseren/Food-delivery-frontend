@@ -18,7 +18,6 @@ export default function Food({
       >
         <div className="w-full h-[130px] lg:w-[240px] relative">
           <img src={image} className="w-full object-cover h-[130px] " />
-          {/* <div className="flex justify-end items-end mt-2 > */}
           <EditFood
             food={{
               image,
@@ -30,9 +29,7 @@ export default function Food({
             }}
             data={data}
           />
-          {/* </div> */}
         </div>
-
         <div>
           <div className="flex justify-between mt-3">
             <p className="text-[#EF4444]">{foodName}</p>
