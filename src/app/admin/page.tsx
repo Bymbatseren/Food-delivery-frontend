@@ -5,6 +5,8 @@ import FoodList from "./components/foodList"; // FoodList компонент
 import Navigation from "./components/navigation";
 import Modal from "./components/modal";
 import AddDish from "./components/addDish";
+import Link from "next/link";
+import Food from "./components/food";
 
 export default function Admin() {
   const [category, setCategories] = useState<any>([]);
@@ -21,29 +23,17 @@ export default function Admin() {
     Show();
   }, []);
 
-  const handleCategory = (categoryId: string, name: string) => {
-    setSelectedCategory(categoryId);
-    setSelectedCategoryName(name);
-  };
-  console.log(selectedCategory);
-  console.log(selectedCategoryName);
-
   return (
     <div className="bg-[#f4f4f5] flex">
-      <Navigation />
       <div>
         <div className="bg-white mx-5 my-[3%]">
           <p>Dishes Category</p>
           {category.map((category: any) => (
-            <Badge
-              key={category._id}
-              className="bg-white text-black mr-2 cursor-pointer"
-              onClick={() =>
-                handleCategory(category._id, category.categoryName)
-              }
-            >
-              {category.categoryName}
-            </Badge>
+            <Link href={`admin/${category._id}`} key={category._id}>
+              <Badge className="bg-white text-black mr-2 cursor-pointer">
+                {category.categoryName}
+              </Badge>
+            </Link>
           ))}
           <Modal />
         </div>
@@ -51,15 +41,11 @@ export default function Admin() {
           <p className="font-[600] text-[#09090B] text-[20px]">
             {selectedCategoryName}
           </p>
-          <div className="flex">
-            <div className="mr-5">
-              <AddDish
-                categoryId={selectedCategory}
-                name={selectedCategoryName}
-              />
+          {category.map((category: any) => (
+            <div key={category._id} className="mt-5">
+              <FoodList selectedCategory={category._id} />
             </div>
-            <FoodList selectedCategory={selectedCategory} />
-          </div>
+          ))}
         </div>
       </div>
     </div>

@@ -5,6 +5,7 @@ import {
   SignedOut,
   UserButton,
 } from "@clerk/nextjs";
+import Navigation from "./components/navigation";
 
 export default function Layout({
   children,
@@ -22,7 +23,10 @@ export default function Layout({
         <span className="w-4">
           <UserButton />
         </span>
-        <div>{children}</div>;
+        <div className="flex">
+          <Navigation />
+          <div>{children}</div>
+        </div>
       </SignedIn>
     </ClerkProvider>
   );

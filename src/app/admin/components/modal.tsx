@@ -12,7 +12,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-export default function Modal({ Show, setRender }: any) {
+export default function Modal() {
   async function Create(name: string) {
     await fetch(`http://localhost:4000/food-category`, {
       method: "POST",

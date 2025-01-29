@@ -4,7 +4,7 @@ import AddDish from "./addDish";
 import CategoryFood from "@/app/Components/category-food";
 
 interface FoodListProps {
-  selectedCategory: string | null;
+  selectedCategory: string | null | any;
 }
 
 export default function FoodList({ selectedCategory }: FoodListProps) {
