@@ -24,3 +24,12 @@ export function updateRequest({ path, id, item }: any) {
     body: JSON.stringify(item),
   });
 }
+export const onPost = async (postPath: string, body: any) => {
+  fetch(`http://localhost:4000/${postPath}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+  });
+};

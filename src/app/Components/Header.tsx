@@ -1,3 +1,5 @@
+import { UserButton } from "@clerk/nextjs";
+import { HiOutlineShoppingCart } from "react-icons/hi";
 export default function Header() {
   return (
     <>
@@ -20,12 +22,16 @@ export default function Header() {
           <div className="flex gap-2">
             <div>
               <button className="rounded-full flex justify-center items-center bg-[#F4F4F5]">
-                <p className="pl-[12px] pr-[12px] pt-[8px] pb-[8px]">Sign up</p>
+                <p className="pl-[18px] pr-[18px] pt-[16px] pb-[16px]">
+                  <HiOutlineShoppingCart />
+                </p>
               </button>
             </div>
             <div>
               <button className="rounded-full flex justify-center items-center bg-[#EF4444]">
-                <p className="pl-[12px] pr-[12px] pt-[8px] pb-[8px]">Log in</p>
+                <p className="pl-[12px] pr-[12px] pt-[8px] pb-[6px]">
+                  <UserButton />
+                </p>
               </button>
             </div>
           </div>
