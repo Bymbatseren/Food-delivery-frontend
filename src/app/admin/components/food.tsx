@@ -1,5 +1,5 @@
 import { foodType } from "./types";
-import useFetch from "../../Components/useAuthFetch";
+import useFetch from "@/app/Components/useAuthFetch";
 import EditFood from "./editFood";
 export default function Food({
   image,

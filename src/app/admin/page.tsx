@@ -8,28 +8,33 @@ import AddDish from "./components/addDish";
 import Link from "next/link";
 import Food from "./components/food";
 import { useUser } from "@clerk/nextjs";
+import { useAuth } from "@clerk/clerk-react";
 
 export default function Admin() {
   const { user, isLoaded } = useUser();
-  if (!isLoaded) {
-    return null;
-  }
 
-  const [category, setCategories] = useState<any>([]);
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [selectedCategoryName, setSelectedCategoryName] = useState<string>("");
+  const isAdmin = user?.publicMetadata.role === "admin";
+  const [category, setCategories] = useState([]);
+  const { getToken }: any = useAuth();
 
   async function Show() {
-    const res = await fetch(`http://localhost:4000/food-category`);
+    const token = await getToken();
+    const res = await fetch(`http://localhost:4000/food-category`, {
+      headers: {
+        authentication: token,
+      },
+    });
     const data = await res.json();
     setCategories(data);
+    console.log(token);
   }
 
   useEffect(() => {
     Show();
   }, []);
-  const isAdmin = user?.publicMetadata.role === "admin";
-
+  if (!isLoaded) {
+    return null;
+  }
   return (
     <>
       {isAdmin ? (
@@ -47,9 +52,6 @@ export default function Admin() {
               <Modal />
             </div>
             <div className="ml-10">
-              <p className="font-[600] text-[#09090B] text-[20px]">
-                {selectedCategoryName}
-              </p>
               {category.map((category: any) => (
                 <div key={category._id} className="mt-5">
                   <FoodList selectedCategory={category._id} />
@@ -59,7 +61,7 @@ export default function Admin() {
           </div>
         </div>
       ) : (
-        "forbidden"
+        "error"
       )}
     </>
   );

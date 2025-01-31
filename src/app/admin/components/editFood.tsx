@@ -1,4 +1,4 @@
-import { updateRequest } from "../../Components/useAuthFetch";
+import { updateRequest } from "@/app/Components/useAuthFetch";
 import { useState } from "react";
 import {
   AlertDialog,
